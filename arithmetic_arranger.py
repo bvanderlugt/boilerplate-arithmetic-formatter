@@ -1,7 +1,7 @@
 import operator
-from functools import reduce
 
 ops = {"+": operator.add, "-": operator.sub}
+
 
 def arithmetic_arranger(*args):
     if args is None:
@@ -17,7 +17,7 @@ def arithmetic_arranger(*args):
     for problem in problems:
         parts = problem.split(" ")
         err = _validate_problem_parts(parts)
-        if err != None:
+        if err is not None:
             return err
         sum = ops[parts[1]](int(parts[0]), int(parts[2]))
         max_num_len = max(len(parts[0]), len(parts[2]))
@@ -38,6 +38,7 @@ def arithmetic_arranger(*args):
     if solve:
         res.append("    ".join(row_4))
     return "\n".join(res)
+
 
 def _validate_problem_parts(parts):
     if parts[1] not in '+-':
